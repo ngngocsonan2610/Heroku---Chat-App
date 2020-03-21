@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>QDNA Translate Bot</title>
+   	 <meta charset="UTF-8">
+
+    	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    	<link href="static/bootstrap.min.css" rel="stylesheet">
+	<style>
+		* {
+		    margin: 0;
+		    padding: 0;
+		    box-sizing: border-box;
+		}
+		body {
+		    font: 20px Helvetica, Arial;
+		}
+
+
+		input {                   
+                                                          
+		    border: 1;
+		    padding: 10px;
+		    width: 86%;
+		    margin-right: .5%;
+                    font: 20px;
+		}
+		button {
+		    width: 8%;                    
+		    background: rgb(56, 256, 56);
+		    border: 1;
+		    padding: 10px;
+                    font: 20px;
+		}
+
+
+		#messages {
+		    list-style-type: none;
+		    margin: 0;
+		    padding: 0;
+		}
+		#messages li {
+		    padding: 5px 10px;
+		}
+		#messages li:nth-child(odd) {
+		    background: #eee;
+		}
+		#messages {
+		    margin-bottom: 40px
+		}
+
+
+	</style>
+
+	
+</head>
+
+
+<body data-gr-c-s-loaded="true">
+	<h1>Tranlation ChatBot</h1>
+
+	<ul id="messages">
+		{% for chat in chats %}
+			{% if chat.mess_class == "me" %}
+			<li style="color:red" class="me">{{ chat.text }}</li>
+			{% else %}
+			<li style="color:green" class="bot">{{ chat.text }}</li>
+			{% endif %}
+
+		{% endfor %}
+	</ul>
+	<form action = "/add" method="post">
+		<input type="text" name = "nameMes" />
+		<button class="btn btn-success" type="submit">Send</button>
+	
+	</form>	 
+	
+
+
+</body>
+</html>
